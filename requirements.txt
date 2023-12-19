@@ -1,0 +1,8 @@
+pandas
+ucimlrepo
+scikit-learn
+keras
+tensorflow
+Flask
+flask-cors
+matplotlib
