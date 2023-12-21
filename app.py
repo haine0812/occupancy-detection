@@ -1,13 +1,13 @@
 from flask import Flask, request, jsonify
-from keras.models import load_model
 import pandas as pd
-from sklearn.preprocessing import LabelEncoder, StandardScaler
+from sklearn.preprocessing import StandardScaler
 from flask_cors import CORS
 import pickle
 
 
 app = Flask(__name__)
 CORS(app)
+app.config['CORS_HEADERS'] = 'Content-Type'
 with open('svm_model.pkl', 'rb') as model_file:
     loaded_svm_model = pickle.load(model_file)
 df_train = pd.read_csv('./data/datatrain.csv')
