@@ -1,8 +1,6 @@
 from flask import Flask, request, jsonify
-import tensorflow as tf
 from keras.models import load_model
 import pandas as pd
-import os
 from sklearn.preprocessing import LabelEncoder, StandardScaler
 from flask_cors import CORS
 import pickle
