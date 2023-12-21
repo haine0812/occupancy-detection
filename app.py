@@ -1,16 +1,18 @@
+
+# A very simple Flask Hello World app for you to get started with...
+
 from flask import Flask, request, jsonify
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from flask_cors import CORS
 import pickle
 
-
 app = Flask(__name__)
 CORS(app)
 app.config['CORS_HEADERS'] = 'Content-Type'
-with open('svm_model.pkl', 'rb') as model_file:
+with open('/home/haitt1467/project/svm_model.pkl', 'rb') as model_file:
     loaded_svm_model = pickle.load(model_file)
-df_train = pd.read_csv('./data/datatrain.csv')
+df_train = pd.read_csv('/home/haitt1467/project/datatrain.csv')
 df_train = df_train.drop('Occupancy', axis=1).drop('date', axis=1)
 scaler = StandardScaler()
 scaler.fit(df_train)
@@ -55,5 +57,7 @@ def predict():
     return jsonify(result)
 
 
-if __name__ == '__main__':
-    app.run(debug=True, port=5000)
+@app.route('/')
+def hello_world():
+    return 'Hello from Flask!'
+
